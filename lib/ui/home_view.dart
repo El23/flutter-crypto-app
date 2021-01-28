@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_crypto/net/api_methods.dart';
 
 import 'add_view.dart';
 
@@ -11,6 +12,22 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  double bitcoin = 0.0;
+  double ethereum = 0.0;
+  double tether = 0.0;
+
+  @override
+  void initState() {
+
+    getValues();
+  }
+  getValues()async{
+    bitcoin =await getPrice("bitcoin");
+    ethereum = await getPrice("ethereum");
+    tether = await getPrice("tether");
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

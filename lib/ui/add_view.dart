@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_crypto/net/flutterfire.dart';
 
 class AddView extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _AddViewState extends State<AddView> {
   Widget build(BuildContext context) {
     return Material(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           DropdownButton(
             value: dropdownValue,
@@ -54,6 +56,7 @@ class _AddViewState extends State<AddView> {
             ),
             child: MaterialButton(
               onPressed: () async {
+                await addCoin(dropdownValue, _amountController.text);
     Navigator.of(context).pop();
 
               },
